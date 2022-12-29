@@ -14,6 +14,7 @@ infixl 10 `hash`
 ||| Minimal implementation: 'hashWithSalt'
 public export
 interface Hashable a where
+    constructor MkHashable
     ||| Hash a value with the given salt
     total
     hashWithSalt : Bits64 -> a -> Bits64
