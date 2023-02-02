@@ -134,6 +134,11 @@ Hashable a => Hashable (Maybe a) where
     hashWithSalt salt (Just x) = hashWithSalt salt 1 `hashWithSalt` x
 
 export
+Hashable a => Hashable b => Hashable (Either a b) where
+  hashWithSalt salt (Left x) = hashWithSalt salt 0 `hashWithSalt` x
+  hashWithSalt salt (Right x) = hashWithSalt salt 1 `hashWithSalt` x
+
+export
 Hashable a => Hashable (List a) where
     hashWithSalt salt [] = hashWithSalt salt 0
     hashWithSalt salt (x :: xs) =
